@@ -4,5 +4,4 @@ $.get('banner.html', function(data){
     $('body').prepend(content);
 });
 
-//$("a").css('color','#a6a6a6');
-
+$("#edit").append('123');
