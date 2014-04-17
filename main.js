@@ -1,8 +1,13 @@
-var content;
-$.get('banner.html', function(data){
-    content= data;
-    $('body').prepend(content);
-});
+$("#banner").load("banner.html", 
+	function() {
+		if(document.location.pathname.search('projects')){
+			$(this).find("#projects").addClass('selected');
+		}
+		else {
+			$(this).find("#home").addClass('selected');
+		}
+	}
+);
 var months = [ "January", "February", "March", "April", "May", "June", 
 			 	"July", "August", "September", "October", "November", "December" ],
 	lastMod = new Date(document.lastModified);
