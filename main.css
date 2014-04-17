@@ -2,7 +2,6 @@ body {
 	width: 800px;
 }
 .content {
-	/*background-color: #F5F1DE;*/
 	padding-left: 15px;
 }
 .top-divider {
@@ -15,4 +14,8 @@ body {
 }
 a, .navbar{
 	color: #a6a6a6;
+}
+
+a[href^="http"], a[href$=".pdf"], h3, h4 	{
+	font-weight: bold;
 }
