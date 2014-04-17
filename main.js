@@ -1,6 +1,6 @@
 $("#banner").load("banner.html", 
 	function() {
-		if(document.location.pathname.search('projects')){
+		if(document.location.pathname.search('projects')!=-1){
 			$(this).find("#projects").addClass('selected');
 		}
 		else {
