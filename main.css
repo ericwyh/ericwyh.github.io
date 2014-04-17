@@ -15,7 +15,12 @@ body {
 a, .navbar{
 	color: #a6a6a6;
 }
-
 a[href^="http"], a[href$=".pdf"], h3, h4 	{
 	font-weight: bold;
+}
+img + div {
+	min-height: 110px;
+}
+.selected {
+	color: black;
 }

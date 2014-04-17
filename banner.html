@@ -2,8 +2,18 @@
   <div class="pull-right">
     <a href="/" class="navbar-brand">Home</a>
     <span class="navbar-brand">|</span>
-    <a class="navbar-brand navitem" href="/projects.html">Projects</a>
+    <a class="navbar-brand" href="/projects.html">Projects</a>
     <span class="navbar-brand">|</span>
     <a class="navbar-brand" href="#">Blog</a>
     </div>
 </header>
+
+<script type="text/javascript">
+$(function() {
+	$('a.navbar-brand').click(function() {
+		$('a.navbar-brand').removeClass('selected');
+		$(this).addClass('selected');
+	});
+});
+</script>
+
