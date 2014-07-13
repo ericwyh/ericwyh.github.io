@@ -39,7 +39,7 @@
             <h3 class="panel-title"><b>Results:</b></h3>
           </div>
           <div class="panel-body">
-            <div class="results"></div>
+            <div class="results text-center"></div>
             <button class="btn btn-sm pull-right">New Search</button>
           </div>
       </div>
@@ -67,7 +67,7 @@
         $('.btn-sm').show();
         var quote = data.query.results.quote;
         var results = "";
-        results = '<div class="center-block"> <dl class="dl-horizontal"> <dt>Name</dt>' + 
+        results = '<div class="text-center"> <dl class="dl-horizontal"> <dt>Name</dt>' + 
                   '<dd>' + quote.Name + '</dd>' +
                   '<dt>Symbol</dt>' + '<dd>' + quote.Symbol + '</dd>' +
                   '<dt>Last Trade Price</dt>' + '<dd>' + quote.LastTradePriceOnly + '</dd>' +
