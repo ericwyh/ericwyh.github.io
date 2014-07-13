@@ -43,7 +43,7 @@
           </div>
           <div class="panel-body"></div>
           <div class="panel-footer">
-            <a>New Search</a>
+            <a class="btn btn-sm">New Search</a>
         </div>
       </div>
     </div>
@@ -67,10 +67,15 @@
       function printQuote(data) {
         $('.panel').show();
         $('.col-md-4').hide();
-        $('.panel-body').append("Last Trade Price :" + data.query.results.quote.LastTradePriceOnly);
-        
+
+        $('.panel-body').append("<b>Name :</b>" + data.query.results.quote.Name);
+        $('.panel-body').append("<b>Symbol :</b>" + data.query.results.quote.Symbol);
+        $('.panel-body').append("<b>Last Trade Price :</b>" + data.query.results.quote.LastTradePriceOnly);
+        $('.panel-body').append("<b>StockExchange :</b>" + data.query.results.quote.StockExchange);
+        $('.panel-body').append("<b>DaysRange :</b>" + data.query.results.quote.DaysRange);
+
       }
-      $('.btn-small').click(function() {
+      $('.btn-sm').click(function() {
         $('.panel').hide();
          $('.col-md-4').show();
       });
