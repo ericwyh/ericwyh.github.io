@@ -13,10 +13,7 @@
 </head>
 <body class="center-block">
   <div class="content">
-    <!--<div id="top-header">
-      <span class="pull-right"><h2>Stock Alert</h2></span>
-    </div>
-    -->
+    <br>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-4 center-block">
@@ -42,6 +39,7 @@
             <h3 class="panel-title"><b>Results:</b></h3>
           </div>
           <div class="panel-body">
+            <div class="results"></div>
             <button class="btn btn-sm pull-right">New Search</button>
           </div>
       </div>
@@ -55,7 +53,6 @@
     
     <script type="text/javascript">
       $('.panel').hide();
-      $('.btn-sm').hide();
       function getQuote() {
         var symbol = document.getElementById("symbol").value;
         var script = document.createElement('script');
@@ -70,26 +67,20 @@
         $('.btn-sm').show();
         var quote = data.query.results.quote;
         var results = "";
-        results = '<dl class="dl-horizontal"> <dt>Name</dt>' + 
+        results = '<div class="center-block"> <dl class="dl-horizontal"> <dt>Name</dt>' + 
                   '<dd>' + quote.Name + '</dd>' +
                   '<dt>Symbol</dt>' + '<dd>' + quote.Symbol + '</dd>' +
                   '<dt>Last Trade Price</dt>' + '<dd>' + quote.LastTradePriceOnly + '</dd>' +
                   '<dt>Stock Exchange</dt>' + '<dd>' + quote.StockExchange + '</dd>' +
                   '<dt>Day\'s Range</dt>' + '<dd>' + quote.DaysRange + '</dd>' +
-                  '</dl>';
+                  '</dl></div>';
          
-        $('.panel-body').prepend(results);
-        /*$('.panel-body').append("<b> :</b>" + data.query.results.quote.Name);
-        $('.panel-body').append("<br><b>Symbol :</b>" + data.query.results.quote.Symbol);
-        $('.panel-body').append("<br><b>Last Trade Price :</b>" + data.query.results.quote.LastTradePriceOnly);
-        $('.panel-body').append("<br><b>StockExchange :</b>" + data.query.results.quote.StockExchange);
-        $('.panel-body').append("<br><b>DaysRange :</b>" + data.query.results.quote.DaysRange);
-        */
+        $('.results').html(results);
       }
       $('.btn-sm').click(function() {
-        $('.panel').hide();
-        $('.btn-sm').hide();
-         $('.col-md-4').show();
+          $('.panel').hide();
+          $('.col-md-4').show();
+          $('#symbol').val('');
       });
     </script>
 </div>
