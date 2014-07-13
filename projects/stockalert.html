@@ -86,6 +86,12 @@
           $('#symbol').val('');
       });
       
+      $("#symbol").keyup(function(event){
+          if(event.keyCode == 13){
+              getQuote();
+          }
+      });
+      
       function isMobile() {
         if(window.innerWidth <= 800 && window.innerHeight <= 600) {
           return true;
