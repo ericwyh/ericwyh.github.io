@@ -12,12 +12,11 @@
   <link rel="stylesheet" href="../main.css">
 </head>
 <body class="center-block">
-  <div id="banner"></div>
   <div class="content">
-    
-
     <span class="test">Symbol</span>
-    <input type="text" / id="symbol">
+    <input type="text" id="symbol" />
+    <span class="glyphicon glyphicon-time"></span>
+    
     <button class="btn btn-success" onclick="getQuote();">Get quote</button><br><br>
     <script type="text/javascript">
       
@@ -30,9 +29,6 @@
       }
       
       function printQuote(data) {
-    //var name = data.query.results.row.name;
-    //var rate = parseFloat(data.query.results.quote.LastTradePriceOnly, 10);
-    //alert("Exchange rate " + name + " is " + rate);
     var lastPrice = data.query.results.quote.LastTradePriceOnly;
     alert(lastPrice);
     document.getElementById('symbol').value = "Last Traded Price :" + lastPrice;
