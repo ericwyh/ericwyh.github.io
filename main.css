@@ -24,3 +24,6 @@ img + div {
 .selected {
 	color: black;
 }
+.test {
+	color: red;
+}
