@@ -16,6 +16,7 @@
     <br>
     <div class="container-fluid">
       <div class="row">
+        <div class="col-md-offset-4"></div>
         <div class="col-md-4">
           <div class="input-group">
           <input type="text" placeholder="Symbol" class="form-control" id="symbol">
@@ -24,7 +25,7 @@
           </span>
         </div>
         </div>
-        
+        <div class="col-md-offset-4"></div>
         
       </div>
       <div class="row">
@@ -40,7 +41,7 @@
           </div>
           <div class="panel-body">
             <div class="results"></div>
-            <!--<button class="btn btn-sm pull-right">New Search</button>-->
+            <button class="btn btn-sm pull-right">New Search</button>
           </div>
       </div>
     </div>
@@ -64,7 +65,6 @@
       function printQuote(data) {
         $('.panel').show();
         $('.col-md-4').hide();
-        $('.btn-sm').show();
         var quote = data.query.results.quote;
         var results = "";
         results = '<dl class="dl-horizontal"> <dt>Name</dt>' + 
@@ -81,6 +81,20 @@
           $('.panel').hide();
           $('.col-md-4').show();
           $('#symbol').val('');
+      });
+      
+      function isMobile() {
+        if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      
+      $( document ).ready(function() {
+        if(isMobile()) {
+          $('body').css('width','100%');
+        }
       });
     </script>
 </div>
