@@ -44,7 +44,7 @@
           <div class="panel-body"></div>
       </div>
       <div class="row">
-          <button class="btn btn-sm">New Search</button>
+          <button class="btn btn-sm pull-right">New Search</button>
       </div>
     </div>
     
@@ -56,6 +56,7 @@
     
     <script type="text/javascript">
       $('.panel').hide();
+      $('.btn-sm').hide();
       function getQuote() {
         var symbol = document.getElementById("symbol").value;
         var script = document.createElement('script');
@@ -67,13 +68,24 @@
       function printQuote(data) {
         $('.panel').show();
         $('.col-md-4').hide();
-
-        $('.panel-body').append("<b>Name :</b>" + data.query.results.quote.Name);
+        $('.btn-sm').show();
+        var quote = data.query.results.quote;
+        var results = "";
+        results = '<dl class="dl-horizontal"> <dt>Name</dt>' + 
+                  '<dd>' + quote.Name + '</dd>' +
+                  '<dt>Symbol</dt>' + '<dd>' + quote.Symbol + '</dd>' +
+                  '<dt>Last Trade Price</dt>' + '<dd>' + quote.LastTradePriceOnly + '</dd>' +
+                  '<dt>Stock Exchange</dt>' + '<dd>' + quote.StockExchange + '</dd>' +
+                  '<dt>Day\'s Range</dt>' + '<dd>' + quote.DaysRange + '</dd>' +
+                  '</dl>';
+         
+        $('.panel-body').append(results);
+        /*$('.panel-body').append("<b> :</b>" + data.query.results.quote.Name);
         $('.panel-body').append("<br><b>Symbol :</b>" + data.query.results.quote.Symbol);
         $('.panel-body').append("<br><b>Last Trade Price :</b>" + data.query.results.quote.LastTradePriceOnly);
         $('.panel-body').append("<br><b>StockExchange :</b>" + data.query.results.quote.StockExchange);
         $('.panel-body').append("<br><b>DaysRange :</b>" + data.query.results.quote.DaysRange);
-
+        */
       }
       $('.btn-sm').click(function() {
         $('.panel').hide();
