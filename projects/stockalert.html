@@ -41,10 +41,9 @@
           <div class="panel-heading">
             <h3 class="panel-title"><b>Results:</b></h3>
           </div>
-          <div class="panel-body"></div>
-      </div>
-      <div class="row">
-          <button class="btn btn-sm pull-right">New Search</button>
+          <div class="panel-body">
+            <button class="btn btn-sm pull-right">New Search</button>
+          </div>
       </div>
     </div>
     
@@ -79,7 +78,7 @@
                   '<dt>Day\'s Range</dt>' + '<dd>' + quote.DaysRange + '</dd>' +
                   '</dl>';
          
-        $('.panel-body').append(results);
+        $('.panel-body').prepend(results);
         /*$('.panel-body').append("<b> :</b>" + data.query.results.quote.Name);
         $('.panel-body').append("<br><b>Symbol :</b>" + data.query.results.quote.Symbol);
         $('.panel-body').append("<br><b>Last Trade Price :</b>" + data.query.results.quote.LastTradePriceOnly);
@@ -89,6 +88,7 @@
       }
       $('.btn-sm').click(function() {
         $('.panel').hide();
+        $('.btn-sm').hide();
          $('.col-md-4').show();
       });
     </script>
