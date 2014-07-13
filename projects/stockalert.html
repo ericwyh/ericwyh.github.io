@@ -16,23 +16,38 @@
     <div id="top-header">
       <span class="pull-right"><h2>Stock Alert</h2></span>
     </div>
-    <div class="input-group">
-      <b>Symbol</b>
-      <input type="text" class="form-control" id="symbol">
-      <span class="input-group-btn">
-        <button class="btn btn-primary" type="button">Get Quote</button>
-      </span>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="input-group">
+          <b>Symbol</b>
+          <input type="text" class="form-control" id="symbol">
+          <span class="input-group-btn">
+            <button onclick="getQuote();" class="btn btn-primary" type="button">Get Quote</button>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+    
+      </div>
+      <div class="row">
+    
+      </div>
+      <div class="row">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title"><b>Results:</b></h3>
+          </div>
+          <div class="panel-body"></div>
+        </div>
+      </div>
     </div>
+    
+    
   
   
     <!--<span class="glyphicon glyphicon-time"></span>-->
     
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title"><b>Results:</b></h3>
-      </div>
-      <div class="panel-body"></div>
-    </div>
     
     <script type="text/javascript">
       $('.panel').hide();
