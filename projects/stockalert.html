@@ -13,11 +13,19 @@
 </head>
 <body class="center-block">
   <div class="content">
-    <span class="test">Symbol</span>
-    <input type="text" id="symbol" />
-    <span class="glyphicon glyphicon-time"></span>
-    
-    <button class="btn btn-success" onclick="getQuote();">Get quote</button><br><br>
+    <div id="top-header">
+      <span class="pull-right"><h2>Stock Alert</h2></span>
+    </div>
+    <div class="input-group">
+      <b>Symbol</b>
+      <input type="text" class="form-control" id="symbol">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">Get Quote</button>
+      </span>
+    </div>
+  
+  
+    <!--<span class="glyphicon glyphicon-time"></span>-->
     
     <div class="panel panel-primary">
       <div class="panel-heading">
