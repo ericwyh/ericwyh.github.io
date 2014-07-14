@@ -18,8 +18,8 @@
       padding-right: 2%;
     }
     */
-    .panel-primary {
-      width: 100%;
+    .panel {
+      width: 600px;
     }
     .vert-center {
       position: absolute;
@@ -97,6 +97,7 @@
     $( document ).ready(function() {
       if(isMobile()) {
         $('body').css('width','100%');
+        $('.panel').css('width','100%');
       }
     });
   </script>
