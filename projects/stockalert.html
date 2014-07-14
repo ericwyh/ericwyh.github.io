@@ -40,7 +40,7 @@
     <div class="panel panel-primary">
       <div class="panel-heading"><h3 class="panel-title"><b>Results:</b></h3></div>
       <div class="panel-body">
-        <div class="results"></div>
+        <div class="container-fluid"></div>
         <button class="btn btn-sm pull-right">New Search</button>
       </div>
     </div>
@@ -57,17 +57,16 @@
     }
     
     function printQuote(data) {
+      var results;
       $('.panel').show();
       $('.input-group').hide();
       var quote = data.query.results.quote;
-      var results = '<dl class="dl-horizontal"> <dt>Name</dt>' + 
-                    '<dd>' + quote.Name + '</dd>' +
-                    '<dt>Symbol</dt>' + '<dd>' + quote.Symbol + '</dd>' +
-                    '<dt>Last Trade Price</dt>' + '<dd>' + quote.LastTradePriceOnly + '</dd>' +
-                    '<dt>Stock Exchange</dt>' + '<dd>' + quote.StockExchange + '</dd>' +
-                    '<dt>Day\'s Range</dt>' + '<dd>' + quote.DaysRange + '</dd>' +
-                    '</dl>';
-      $('.results').html(results);
+      results = '<row><div class="col-md-3"><br>Name</br></div><div class="col-md-3">' + quote.Name + '</div></row>' +
+                '<row><div class="col-md-3"><br>Symbol</br></div><div class="col-md-3">' + quote.Symbol +'</div></row>' +
+                '<row><div class="col-md-3"><br>Last Trade Price</br></div><div class="col-md-3">' + quote.LastTradePriceOnly + '</div></row>' +
+                '<row><div class="col-md-3"><br>Stock Exchange</br></div><div class="col-md-3">' + quote.StockExchange + '</div></row>' + 
+                '<row><div class="col-md-3"><br>Day\'s Range</br></div><div class="col-md-3">' + quote.DaysRange + '</div></row>';
+      $('.container-fluid').html(results);
     }
     $('.btn-primary').click(function() {
       getQuote();
