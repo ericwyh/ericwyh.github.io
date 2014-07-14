@@ -61,11 +61,11 @@
       $('.panel').show();
       $('.input-group').hide();
       var quote = data.query.results.quote;
-      results = '<div class="row"><div class="col-md-3"><b>Name</b></div><div class="col-md-3">' + quote.Name + '</div></div>' +
-                '<div class="row"><div class="col-md-3"><b>Symbol</b></div><div class="col-md-3">' + quote.Symbol +'</div></div>' +
-                '<div class="row"><div class="col-md-3"><b>Last Trade Price</b></div><div class="col-md-3">' + quote.LastTradePriceOnly + '</div></div>' +
-                '<div class="row"><div class="col-md-3"><b>Stock Exchange</b></div><div class="col-md-3">' + quote.StockExchange + '</div></div>' + 
-                '<div class="row"><div class="col-md-3"><b>Day\'s Range</b></div><div class="col-md-3">' + quote.DaysRange + '</div></div>';
+      results = '<div class="row"><div class="col-md-4"><b>Name</b></div><div class="col-md-3">' + quote.Name + '</div></div>' +
+                '<div class="row"><div class="col-md-4"><b>Symbol</b></div><div class="col-md-3">' + quote.Symbol +'</div></div>' +
+                '<div class="row"><div class="col-md-4"><b>Last Trade Price</b></div><div class="col-md-3">' + quote.LastTradePriceOnly + '</div></div>' +
+                '<div class="row"><div class="col-md-4"><b>Stock Exchange</b></div><div class="col-md-3">' + quote.StockExchange + '</div></div>' + 
+                '<div class="row"><div class="col-md-4"><b>Day\'s Range</b></div><div class="col-md-3">' + quote.DaysRange + '</div></div>';
       $('.container-fluid').html(results);
     }
     $('.btn-primary').click(function() {
