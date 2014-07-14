@@ -29,7 +29,7 @@
 </head>
 <body>
   <div class="vert-center">
-    <div class="input-group">
+    <div class="input-group search-bar-width">
       <input type="text" placeholder="Symbol" class="form-control" id="symbol">
       <span class="input-group-btn">
         <button class="btn btn-primary" type="button">
@@ -69,7 +69,9 @@
                     '</dl>';
       $('.results').html(results);
     }
-    $('.btn-primary').click(getQuote());
+    $('.btn-primary').click(function() {
+      getQuote();
+    });
     $('.btn-sm').click(function() {
         $('.panel').hide();
         $('.input-group').show();
