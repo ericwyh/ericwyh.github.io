@@ -4,102 +4,191 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Eric Y. Wang</title>
+  <title>Stock Alert</title>
   <link rel="shortcut icon" href="myicon.ico" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../main.css">
+  <!--<link rel="stylesheet" href="../main.css">-->
   <style type="text/css">
-    .search-bar-width {
-     width: 200px; 
-    }
-    /*.pad-right{
-      padding-right: 2%;
-    }
-    */
-    .panel {
-      width: 600px;
-    }
-    .vert-center {
-      position: absolute;
-      top: 35%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
-  </style>
+   body {
+    width: 800px;
+  }
+  .search-bar-width {
+   width: 200px; 
+ }
+ .container-flex {
+  margin-right: auto;
+  margin-left: auto;
+}
+.percentage-width {
+  width: 75px;
+}
+.padding-top-35 {
+  padding-top: 35%;
+}
+.padding-top-5 {
+  padding-top: 5%;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.row-no-pad {
+  margin-right: auto;
+  margin-left: auto;
+}
+.bot-border {
+  border-bottom: 1.5px solid #a6a6a6;
+  padding-bottom: 5px;
+}
+.padding-top-5px {
+  padding-top: 5px;
+}
+</style>
 </head>
-<body>
-  <div class="vert-center">
-    <div class="input-group search-bar-width">
-      <input type="text" placeholder="Symbol" class="form-control" id="symbol">
-      <span class="input-group-btn">
-        <button class="btn btn-primary" type="button">
-          <span class="glyphicon glyphicon-search"></span>
-        </button>
-      </span>
-    </div>
-    <div class="panel panel-primary">
-      <div class="panel-heading"><h3 class="panel-title"><b>Results:</b></h3></div>
+<body class="center-block">
+  <div class="center input-group search-bar-width padding-top-35">
+    <input type="text" placeholder="Symbol" class="form-control" id="symbol">
+    <span class="input-group-btn">
+      <button class="btn btn-primary" type="button">
+        <span class="glyphicon glyphicon-search"></span>
+      </button>
+    </span>
+  </div>
+  <div class="padding-top-5">
+    <div class="center panel panel-primary">
+      <div class="panel-heading"><h3 class="panel-title"><b id="name"></b></h3></div>
       <div class="panel-body">
-        <div class="container-fluid"></div>
-        <button class="btn btn-sm pull-right">New Search</button>
+        <div class="container-flex bot-border">
+          <div class="row">
+            <div class="col-md-6">
+              <table class="table-condensed">
+                <tr>
+                  <td><b>Symbol</b></td>
+                  <td id="symbol_col"></td>
+                </tr>
+                <tr>
+                  <td><b>Last Trade Price</b></td>
+                  <td id="lastprice">></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="table-condensed">
+                <tr>
+                  <td><b>Stock Exchange</b></td>
+                  <td id="stockexchange"></td>
+                </tr>
+                <tr>
+                  <td><b>Day's Range</b></td>
+                  <td id="daysrange"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="container-flex padding-top-5px">
+          <div class="pull-right">
+            <button class="btn btn-default" id="toggle_tracking">Start</button>
+            <button class="btn btn-default" id="newsearch">New Search</button>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="center" id="logs">
+    </div>
   </div>
-  
-    <!--<span class="glyphicon glyphicon-time"></span>-->
+
+  <!--<span class="glyphicon glyphicon-time"></span>-->
   <script type="text/javascript">
-    $('.panel').hide();
+    var isTracking = false;
+    var interval;
+    $('#toggle_tracking').css('width',$('#newsearch').css('width'));
+    $('.padding-top-5').hide();
     function getQuote() {
       var script = document.createElement('script');
       var query = 'select * from yahoo.finance.quote where symbol in ("'+document.getElementById("symbol").value+'")';
       script.setAttribute('src', 'https://query.yahooapis.com/v1/public/yql?q='+query+'&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=printQuote');
       document.body.appendChild(script);
     }
-    
+
     function printQuote(data) {
-      var results;
-      $('.panel').show();
-      $('.input-group').hide();
       var quote = data.query.results.quote;
-      results = '<div class="row"><div class="col-md-5"><b>Name</b></div><div class="col-md-3">' + quote.Name + '</div></div>' +
-                '<div class="row"><div class="col-md-5"><b>Symbol</b></div><div class="col-md-3">' + quote.Symbol +'</div></div>' +
-                '<div class="row"><div class="col-md-5"><b>Last Trade Price</b></div><div class="col-md-3">' + quote.LastTradePriceOnly + '</div></div>' +
-                '<div class="row"><div class="col-md-5"><b>Stock Exchange</b></div><div class="col-md-3">' + quote.StockExchange + '</div></div>' + 
-                '<div class="row"><div class="col-md-5"><b>Day\'s Range</b></div><div class="col-md-3">' + quote.DaysRange + '</div></div>';
-      $('.container-fluid').html(results);
+      if(!isTracking) {
+        var results;
+        $('.padding-top-5').show();
+        $('.input-group').hide();
+        var quote = data.query.results.quote;
+        $('#name').html(quote.Name);
+        $('#symbol_col').html(quote.Symbol);
+        $('#lastprice').html(quote.LastTradePriceOnly );
+        $('#daysrange').html(quote.DaysRange);
+        $('#stockexchange').html(quote.StockExchange);
+      }
+      else {
+        $('#last_trade_price').html(quote.LastTradePriceOnly);
+        $('#logs').prepend(quote.LastTradePriceOnly);
+        $('#logs').prepend('<br>');
+      }
+
+
     }
     $('.btn-primary').click(function() {
       getQuote();
     });
-    $('.btn-sm').click(function() {
-        $('.panel').hide();
-        $('.input-group').show();
-        $('#symbol').val('');
+
+    $('#newsearch').click(function() {
+      $('.padding-top-5').hide();
+      isTracking = false;
+      $('.input-group').show();
+      $('#symbol').val('');
+      $('#logs').html('');
     });
-    
+
     $("#symbol").keyup(function(event){
-        if(event.keyCode == 13){
-            getQuote();
-        }
-    });
-    
-    function isMobile() {
-      if(window.innerWidth <= 800 && window.innerHeight <= 600) {
-        return true;
-      } else {
-        return false;
+      if(event.keyCode == 13){
+        getQuote();
       }
+    });
+
+    var isTracking = false;
+
+    function trackQuote() {
+      interval = setInterval(function(){myTimer()},15000);
+      function myTimer() {
+       getQuote();
+     }
+   }
+
+
+   $('#toggle_tracking').click(function() {
+    if(isTracking) {
+      $(this).html('Start');
+      window.clearInterval(interval);
+      isTracking = !isTracking;
     }
-    
-    $( document ).ready(function() {
-      if(isMobile()) {
-        $('body').css('width','100%');
-        $('.panel').css('width','100%');
-      }
-    });
-  </script>
+    else { 
+      $(this).html('Stop');
+      isTracking = !isTracking;
+      trackQuote();
+    }
+  });
+
+   function isMobile() {
+    if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  $( document ).ready(function() {
+    if(isMobile()) {
+      $('body').css('width','100%');
+      $('.panel').css('width', window.innerWidth*0.99);
+    }
+  });
+</script>
 </body>
 </html>
