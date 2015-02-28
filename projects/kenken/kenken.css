@@ -1,0 +1,57 @@
+
+main {
+	margin-top: 2%;
+	min-width: 500px;
+	width: 25%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+header {
+	margin-top: 10%;
+	margin-bottom: 2%;
+}
+
+td {
+	/*padding-left: 3px !important;
+	padding-top: 0px !important;*/
+	/*text-align: center;
+	vertical-align: middle !important;
+	overflow: hidden;*/
+	padding: 0px !important;
+}
+
+.title {
+	font-size: 300%;
+}
+
+.settings {
+	float: right !important;
+	padding-top: 17px;
+}
+
+.num {
+	/*padding-left: 50%;
+	margin-bottom: 0;*/
+	text-align: center;
+	width: 33.33%;
+	height: 100%;
+	display: inline-block;
+	float: left;
+	padding-top: 40%;
+	font-size: 150%;
+	font-weight: bolder;
+	color: #5cb85c;
+}
+
+.hint {
+	/*float: left !important;
+	position: relative;
+	margin-top: 0;*/
+	width: 33.33%;
+	display: inline-block;
+	float: left;
+	height: 100%;
+	padding-left: 4px;
+
+}

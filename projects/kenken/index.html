@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KenKen by raizen</title>
+
+    <link href="kenken.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  </head>
+  <body>
+    <main>
+      <header>  
+      <span class="title">KenKen</span>    
+      <div class="settings">
+      <span >Grid size:</span>
+      <div class="btn-group">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="size" data-toggle="dropdown" aria-expanded="true">
+          <span>3 &times; 3</span>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="size">
+        </ul>
+      </div>
+      </div>
+      &nbsp;
+      Operations:
+      <div class="btn-group">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="operations" data-toggle="dropdown" aria-expanded="true">
+          <span>&plus;</span>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu test1" role="menu" aria-labelledby="operations">
+        </ul>
+      </div>
+      </div>
+      &nbsp;
+      <button class="btn btn-success" id="start">Start</button>
+      </div>
+
+
+
+      </header>
+      
+
+
+      <table  class="table table-bordered" id="grid"></table>
+    </main>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="kenken.js"></script>
+    
+  </body>
+</html>
