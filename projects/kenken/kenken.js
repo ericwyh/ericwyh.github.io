@@ -30,37 +30,63 @@ $(document).ready(function() {
 
 
 $('#start').click(function() {
-	var size = selectionCriteria.size;
-
-	var container = $('#grid').empty(), tableSideLength = $('main').width(), tbody = $('<tbody>'), count = 0;
-
+	var size = selectionCriteria.size, container = $('#grid').empty(), tableSideLength = $('main').width(), tbody = $('<tbody>'), count = 0;
 
 	for(i=0; i<size; i++) {
 		var row = $('<tr>');
 		for(m=0; m<size; m++) {
-			var center = $('<div>').addClass('num'), td = $('<td>');
-			td.append('<div class="hint" data-toggle="tooltip" title="" data-original-title="Another one here too">8&times</div>');
-			td.append(center.text(++count));
-			row.append(td);
+			row.append($('<td>').addClass('t'+(++count))
+        .append($('<div>').addClass('cell').css('height',(0.99*tableSideLength/size)+'px')
+          .append($('<div>').addClass('hint').html('&nbsp;8&plus;'))
+          .append($('<div>').addClass('num n'+count))));
 		}
 		tbody.append(row);
 	}
 
 	container.append(tbody);
 	$('#grid').css({height:tableSideLength, width:tableSideLength});
-	$('td').css('vertical-align','');
 	$('td').hover(
 		function() {
-			$(this).css({ 'background-color':'#E0E1E1', 'cursor': 'pointer' });
-
+			$(this).addClass('hover');
+      var num = $(this).children().eq(1);
 		},
 		function() {
-			$(this).css('background-color','#FFFFFF');
+			$(this).removeClass('hover');
+      var num = $(this).children().eq(1);
+      if(num.text()=='??') {
+       num.css('color','#fff'); 
+      }
 		}
 	);
 
-  $('td').click(function() {
-    $(this).children().eq(1).text('$');
+  $('td > .cell').click(function() {
+    var cellWidth = $(this).width();
+    if($(this).children().length<3) {
+      var ul = $('<ul>').attr('class','dropdown-menu').css('width',cellWidth);
+      var createLi = function(i) {
+        return $('<li>').attr('role','presentation').append($('<a>').attr({'href':'#','tabindex':'-1','role':'menuitem'}).text(i))
+      }
+      for(i=1;i<=size;i++) {
+        ul.append(createLi(i));
+      }
+      ul.append(createLi('Clear'));
+
+      $(this).append($('<div>').css({'position':'absolute'}).append(ul));
+    }
+    var num = $(this).children().eq(1);
+    $(this).find('ul').each(function(){
+      $(this).toggle();
+      $(this).children().each(function(){
+        $(this).click(function(){
+          var val = $(this).children().eq(0).text();
+          if(val=='Clear') {
+            val = '';
+          }
+          num.text(val);
+        });
+      });
+      return false;
+    });
   });
 });
 
