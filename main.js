@@ -14,11 +14,7 @@ var months = [ "January", "February", "March", "April", "May", "June",
 $('.content').append('<div class="pull-right"><i>Eric W '+months[lastMod.getMonth()]+', '+lastMod.getFullYear()+'</i></div>');
 
 function isMobile() {
-   if(window.innerWidth <= 800 && window.innerHeight <= 600) {
-     return true;
-   } else {
-     return false;
-   }
+   return (window.innerWidth <= 800 && window.innerHeight <= 600);
 }
 
 $( document ).ready(function() {
