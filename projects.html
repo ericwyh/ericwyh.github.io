@@ -10,16 +10,37 @@
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="main.css">
+  <script>
+  var projects = [
+    { 
+     url:'http://ericwyh.github.io',
+     title:'ericwyh.github.io',
+     desc:'Personal website',
+     github_url:'https://github.com/ericwyh/ericwyh.github.io'
+    }
+  ];
+  $.each(projects, function(i,v){
+    $('#content').append(
+    	$('<p>').addClass('top-divider')
+      	.append(
+      		$('<a>').attr({href:v.url}).append($('<h3>').append(v.title))
+      	)
+        .append($('<b>').append(v.desc))
+        .append('<br>')
+        .append($('<a>').attr({href:v.github_url}).append('Github'))
+    );
+  });
+  </script>
 </head>
 <body class="center-block">
   <div id="banner"></div>
-  <div class="content">
+  <div id="content" class="content">
     <h1>Projects</h1>
-    <p class="top-divider">
+    <!--<p class="top-divider">
       <a href="http://ericwyh.github.io"><h3>ericwyh.github.io</h3></a> 
       <b>Personal website</b><br>
       <a href="https://github.com/ericwyh/ericwyh.github.io">GitHub</a>
-    </p>
+    </p>-->
   </div>
   <script src="main.js"></script>
 </body>
