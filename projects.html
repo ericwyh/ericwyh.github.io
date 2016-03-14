@@ -20,10 +20,7 @@
     }
   ];
 
-  $.each(projects, function(i,v) {
-   console.log(v.url);
-   console.log(v.desc);
-  });
+  /*
   $.each(projects, function(i,v){
     $('#content').append(
     	$('<p>').addClass('top-divider')
@@ -35,6 +32,7 @@
         .append($('<a>').attr({href:v.github_url}).append('Github'))
     );
   });
+  */
   </script>
 </head>
 <body class="center-block">
@@ -47,6 +45,19 @@
       <a href="https://github.com/ericwyh/ericwyh.github.io">GitHub</a>
     </p>-->
   </div>
+  <script type="text/javascript">
+    $.each(projects, function(i,v){
+    $('#content').append(
+    	$('<p>').addClass('top-divider')
+      	.append(
+      		$('<a>').attr({href:v.url}).append($('<h3>').append(v.title))
+      	)
+        .append($('<b>').append(v.desc))
+        .append('<br>')
+        .append($('<a>').attr({href:v.github_url}).append('Github'))
+    );
+  });
+  </script>
   <script src="main.js"></script>
 </body>
 </html>
