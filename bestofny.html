@@ -17,14 +17,24 @@
   <div class="content">
       <h1>New York City - Best of</h1>
       <p class="top-divider">
-      <ul>
-        <li>Soup Dumplings - Nan Xiang</li>
-        <li>Bubble Tea - Shiny Tea</li>
-        <li>Steakhouse - Peter Luger</li>
-        <li>Speakeasy - Angel's Share</li>
-      </ul>
+      <ul id="list"></ul>
     </p>
   </div>
   <script src="main.js"></script>
+  <script type="text/javascript">
+    var list = [
+      'Soup Dumplings - Nan Xiang',
+      'Bubble Tea - Shiny Tea',
+      'Steakhouse - Peter Luger',
+      'Speakeasy - Angel\'s Share'
+    ]
+
+    $.each(list, function(i,v){
+        $('#content').append($('<li><a>'+v+'</a></li>'));
+      }
+    );
+    }
+
+  </script>
 </body>
 </html>
